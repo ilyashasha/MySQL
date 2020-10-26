@@ -1,0 +1,1 @@
+SELECT CURTIME() AS 'Текущее время',  hour(NOW()) AS 'Текущий час', hello() AS 'Результат';

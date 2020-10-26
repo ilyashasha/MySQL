@@ -1,0 +1,5 @@
+START TRANSACTION;
+
+INSERT INTO users SELECT * FROM shop.users WHERE id = 2;
+
+COMMIT;
