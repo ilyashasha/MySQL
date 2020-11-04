@@ -1,0 +1,37 @@
+1. В базе данных Redis подберите коллекцию для подсчета посещений с определенных IP-адресов.
+
+Вставим в коллекцию несколько значений
+SADD ip '127.0.0.1'
+SADD ip '127.0.0.2'
+SADD ip '127.0.0.3'
+
+Смотрим, какие уникальные значения появились у нас в коллекции
+SMEMBERS ip
+
+Считаем сумму значений
+SCARD ip
+
+2. При помощи базы данных Redis решите задачу поиска имени пользователя по электронному адресу и 
+наоборот, поиск электронного адреса пользователя по его имени.
+
+По ключу:
+
+SET email ilya_alekseev@gmail.com
+GET email
+
+По по адресу:
+
+SET ilya_alekseev@gmail.com email
+GET ilya_alekseev@gmail.com
+
+3. Организуйте хранение категорий и товарных позиций учебной базы данных shop в СУБД MongoDB.
+
+use products
+db.products.insert({"name": "Intel Core i3-9100", "description": "Процессор для настольных персональных компьютеров, основанных на платформе Intel.", "price": "7890.00", "catalog_id": "Процессоры", "created_at": new Date(), "updated_at": new Date()}) 
+
+db.products.insertMany([
+	{"name": "AMD FX-8320E", "description": "Процессор для настольных персональных компьютеров, основанных на платформе Intel.", "price": "4780.00", "catalog_id": "Процессоры", "created_at": new Date(), "updated_at": new Date()},
+	{"name": "AMD FX-8320", "description": "Процессор для настольных персональных компьютеров, основанных на платформе Intel.", "price": "7120.00", "catalog_id": "Процессоры", "created_at": new Date(), "updated_at": new Date()}])
+
+db.products.find().pretty()
+db.products.find({name: "AMD FX-8320"}).pretty()
